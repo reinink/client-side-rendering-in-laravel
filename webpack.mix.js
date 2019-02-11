@@ -12,4 +12,11 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+   .sass('resources/sass/app.scss', 'public/css')
+   .extract(['vue', 'lodash', 'popper.js', 'axios'])
+   .webpackConfig({
+       resolve: {
+           alias: { 'vue$': 'vue/dist/vue.runtime.js' }
+       }
+   })
+   .version()

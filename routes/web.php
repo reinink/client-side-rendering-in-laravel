@@ -12,5 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return View::component('Dashboard');
 });
+
+Route::get('/events', 'EventsController@index');
+Route::get('/events/create', 'EventsController@create');
+Route::post('/events', 'EventsController@store');
+Route::get('/events/{event}', 'EventsController@show');
+Route::get('/events/{event}/edit', 'EventsController@edit');
+Route::put('/events/{event}', 'EventsController@update');
+Route::delete('/events/{event}', 'EventsController@destroy');
+
