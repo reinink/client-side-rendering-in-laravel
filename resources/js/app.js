@@ -1,8 +1,12 @@
 import Vue from 'vue'
 
-// Register all the Vue components
-const files = require.context('./', true, /\.vue$/i)
-files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+// Register global Vue components
+Vue.component('Layout', require('./Misc/Layout').default);
+
+// Register all Async Vue components
+require.context('./', true, /\.vue$/i, 'lazy').keys().forEach(file => {
+    Vue.component(file.split('/').pop().split('.')[0], () => import(`${file}` /* webpackChunkName: "[request]" */));
+});
 
 // Start Turbolinks
 require('turbolinks').start()
