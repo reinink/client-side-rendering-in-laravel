@@ -7,7 +7,8 @@ This is a demo app to suppliment my [Server-side apps with client-side rendering
 1. Clone repo
 2. Install Composer dependencies (`composer install`)
 3. Install NPM dependencies (`npm install`)
-4. Configure a local database for the app
-5. Run migrations (`php artisan migrate`)
-6. Create Laravel application key (`php artisan key:generate`)
-7. View it in the browser!
+4. Build assets (`npm run dev`)
+5. Configure a local database for the app
+6. Run migrations (`php artisan migrate`)
+7. Create Laravel application key (`php artisan key:generate`)
+8. View it in the browser!
