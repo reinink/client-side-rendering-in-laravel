@@ -9,4 +9,5 @@ This is a demo app to suppliment my [Server-side apps with client-side rendering
 3. Install NPM dependencies (`npm install`)
 4. Configure a local database for the app
 5. Run migrations (`php artisan migrate`)
-6. View it in the browser!
+6. Create Laravel application key (`php artisan key:generate`)
+7. View it in the browser!
