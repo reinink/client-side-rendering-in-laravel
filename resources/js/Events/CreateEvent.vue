@@ -5,14 +5,23 @@
             <div class="form-group">
                 <label>Title:</label>
                 <input class="form-control" type="text" v-model="form.title">
+                <div class="text-danger" v-if="errors.has('title')">
+                    {{ errors.first('title') }}
+                </div>
             </div>
             <div class="form-group">
                 <label>Start date:</label>
                 <input class="form-control" type="date" v-model="form.start_date">
+                <div class="text-danger" v-if="errors.has('start_date')">
+                    {{ errors.first('start_date') }}
+                </div>
             </div>
             <div class="form-group">
                 <label>Description:</label>
                 <textarea class="form-control" rows="5" v-model="form.description"></textarea>
+                <div class="text-danger" v-if="errors.has('description')">
+                    {{ errors.first('description') }}
+                </div>
             </div>
             <button class="btn btn-primary" type="submit">Create</button>
         </form>
@@ -21,6 +30,7 @@
 
 <script>
 import axios from 'axios'
+import { Errors } from 'form-backend-validation';
 
 export default {
     data() {
@@ -29,14 +39,17 @@ export default {
                 title: null,
                 start_date: null,
                 description: null,
-            }
+            },
+            errors: new Errors(),
         }
     },
     methods: {
         submit() {
             axios.post('/events', this.form).then(response => {
                 Turbolinks.visit('/events')
-            })
+            }).catch((error) => {
+                this.errors = new Errors(error.response.data.errors)
+            });
         },
     }
 }

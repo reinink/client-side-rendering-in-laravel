@@ -23,5 +23,8 @@
         "turbolinks": "^5.2.0",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.5"
+    },
+    "dependencies": {
+        "form-backend-validation": "^2.3.6"
     }
 }
