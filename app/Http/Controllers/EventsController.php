@@ -24,15 +24,13 @@ class EventsController extends Controller
 
     public function store()
     {
-        $this->validate(request(), [
+        $data = $this->validate(request(), [
             'title'       => 'required',
             'start_date'  => 'required|date',
             'description' => 'required',
         ]);
 
-        Event::create(
-            Request::only('title', 'start_date', 'description')
-        );
+        Event::create($data);
     }
 
     public function show(Event $event)
@@ -51,13 +49,13 @@ class EventsController extends Controller
 
     public function update(Event $event)
     {
-        $this->validate(request(), [
+        $data = $this->validate(request(), [
             'title'       => 'required',
             'start_date'  => 'required|date',
             'description' => 'required',
         ]);
 
-        $event->update(Request::only('title', 'start_date', 'description'));
+        $event->update($data);
     }
 
     public function destroy(Event $event)
